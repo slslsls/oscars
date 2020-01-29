@@ -1,0 +1,22 @@
+nominees	
+    id (PK)
+	name
+	category (FK)
+	
+categories	
+    id (PK)
+	name
+    game (FK)
+	value
+	winner (FK)
+
+users
+    id (PK)
+    name
+    game (FK)
+    picks
+    score
+
+games
+    id (PK)
+    name
