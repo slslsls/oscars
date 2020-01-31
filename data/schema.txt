@@ -1,0 +1,39 @@
+nominees
+  id (PK)
+	name
+	category (FK)
+
+categories
+  id (PK)
+	name
+  game (FK)
+	value
+	winner (FK)
+
+  Best Actor
+  Best Actress
+  Best Supporting Actor
+  Best Supporting Actress
+  Best Cinematography
+  Best Costume Design
+  Best Original Score
+  Best Adapted Screenplay
+  Best Original Screenplay
+  Best Director
+  Best Picture
+
+users
+  id (PK)
+  name
+  game (FK)
+  score
+
+picks
+  user (FK)
+  game (FK)
+  category (FK)
+  nominee (FK)
+
+games
+  id (PK)
+  name
