@@ -6,9 +6,7 @@ nominees
 categories
   id (PK)
 	name
-  game (FK)
 	value
-	winner (FK)
 
   Best Actor
   Best Actress
@@ -33,6 +31,8 @@ picks
   game (FK)
   category (FK)
   nominee (FK)
+  announced
+  won
 
 games
   id (PK)
