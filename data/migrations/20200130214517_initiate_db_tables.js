@@ -17,7 +17,7 @@ exports.up = knex => {
     return knex.schema.createTable('categories', table => {
       table.increments('id');
       table.string('name');
-      table.integer('value');
+      table.integer('points');
     });
   }
 
@@ -25,6 +25,7 @@ exports.up = knex => {
     return knex.schema.createTable('nominees', table => {
       table.increments('id');
       table.string('name');
+      table.string('film');
       table.integer('category').unsigned();
       table.foreign('category').references('categories.id');
     });

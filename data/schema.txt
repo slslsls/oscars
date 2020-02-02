@@ -8,18 +8,6 @@ categories
 	name
 	value
 
-  Best Actor
-  Best Actress
-  Best Supporting Actor
-  Best Supporting Actress
-  Best Cinematography
-  Best Costume Design
-  Best Original Score
-  Best Adapted Screenplay
-  Best Original Screenplay
-  Best Director
-  Best Picture
-
 users
   id (PK)
   name
@@ -27,6 +15,7 @@ users
   score
 
 picks
+  id
   user (FK)
   game (FK)
   category (FK)
