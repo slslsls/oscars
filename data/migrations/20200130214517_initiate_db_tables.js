@@ -27,6 +27,7 @@ exports.up = knex => {
       table.string('name');
       table.string('film');
       table.integer('category').unsigned();
+      
       table.foreign('category').references('categories.id');
     });
   }
@@ -36,8 +37,9 @@ exports.up = knex => {
       table.increments('id');
       table.string('name');
       table.integer('game').unsigned();
-      table.foreign('game').references('games.id');
       table.integer('score');
+
+      table.foreign('game').references('games.id');
     });
   }
 
@@ -45,15 +47,16 @@ exports.up = knex => {
     return knex.schema.createTable('picks', table => {
       table.increments('id');
       table.integer('user').unsigned();
-      table.foreign('user').references('users.id');
       table.integer('game').unsigned();
-      table.foreign('game').references('games.id');
       table.integer('category').unsigned();
-      table.foreign('category').references('categories.id');
       table.integer('nominee').unsigned();
-      table.foreign('nominee').references('nominees.id');
       table.boolean('announced');
       table.boolean('won');
+
+      table.foreign('user').references('users.id');
+      table.foreign('game').references('games.id');
+      table.foreign('category').references('categories.id');
+      table.foreign('nominee').references('nominees.id');
     });
   }
 
