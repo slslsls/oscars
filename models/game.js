@@ -10,7 +10,6 @@ function insertPicks(userId, gameId, picks) {
   const promises = [];
 
   picks.forEach(p => {
-    console.log(p)
     promises.push(
       db('picks').insert({
         user: userId[0],
@@ -24,7 +23,14 @@ function insertPicks(userId, gameId, picks) {
   return Promise.all(promises);
 }
 
+function getScoresForGame(gameId) {
+  return db('users')
+    .where('game', gameId)
+    .select('name', 'score');
+}
+
 module.exports = {
   createUser,
-  insertPicks
+  insertPicks,
+  getScoresForGame
 };
