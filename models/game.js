@@ -66,21 +66,6 @@ function buildNominations(categories, nominees) {
 
   return nominations;
 }
-/*
-[
-  {
-    categoryId: 2,
-    categoryName: 'Best Actor',
-    nominees: [
-      {
-        nomineeId: 4,
-        nomineeName: 'Adam Driver',
-        nomineeFilm: 'Marriage Story'
-      }
-    ]
-  }
-]
-*/
 
 function getNominees() {
   return db('nominees')
@@ -92,9 +77,26 @@ function getCategories() {
     .select('*');
 }
 
+function createNewGame(name) {
+  return db('games')
+    .insert({
+      name
+    });
+}
+
+function updateGame(gameId, update) {
+  const { categoryId, winnerId } = update;
+
+  return db('picks')
+    .where('game', gameId)
+    .then()
+}
+
 module.exports = {
   createUser,
   insertPicks,
   getScoresForGame,
-  getNominations
+  getNominations,
+  createNewGame,
+  updateGame
 };
