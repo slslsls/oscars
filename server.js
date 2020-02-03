@@ -29,10 +29,16 @@ app.get('/games/:gameId/scores', (req, res) => {
     .catch(console.log);
 });
 
+app.get('/nominations', (req, res) => {
+  return Game
+    .getNominations()
+    .then(nominations => res.send(nominations))
+    .catch(console.log);
+});
+
 /*
   GET game scores
-  GET all categories (names and IDs)
-  GET all nominees (names and IDs)
+  GET all categories (names and IDs) and nominees (names and IDs)
 
   admin
   GET login
