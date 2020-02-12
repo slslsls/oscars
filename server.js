@@ -38,6 +38,8 @@ app.get('/nominations', (req, res) => {
 
 app.post('/game', (req, res) => {
   if (!req.body || !req.body.name) return res.sendStatus(400);
+  // not a huge deal, just a quick and easy measure to prevent anyone else from making admin calls
+  if (!req.body.adminPassword || req.body.adminPassword != process.env.ADMIN_PASSWORD) return res.sendStatus(401);
 
   return Game
     .createNewGame(req.body.name)
@@ -45,8 +47,10 @@ app.post('/game', (req, res) => {
     .catch(console.log);
 });
 
-app.post('/games/:gameId', (req, res) => {
-  if (!req.body) return res.sendStatus(400);
+app.post('/games/:gameId/update', (req, res) => {
+  if (!req.body || !req.body.categoryId || !req.body.winnerId ) return res.sendStatus(400);
+  // not a huge deal, just a quick and easy measure to prevent anyone else from making admin calls
+  if (!req.body.adminPassword || req.body.adminPassword != process.env.ADMIN_PASSWORD) return res.sendStatus(401);
 
   return Game
     .updateGame(req.params.gameId, req.body)

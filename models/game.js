@@ -89,7 +89,22 @@ function updateGame(gameId, update) {
 
   return db('picks')
     .where('game', gameId)
-    .then()
+    .andWhere('category', categoryId)
+    .andWhere('nominee', winnerId)
+    .update({
+      won: true
+    })
+    .then(() => {
+      return db('picks')
+        .where('game', gameId)
+        .andWhere('category', categoryId)
+        .update({
+          announced: true
+        });
+    })
+    .then(() => {
+      return db('users')
+    });
 }
 
 module.exports = {
